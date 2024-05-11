@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    id("com.google.dagger.hilt.android")
+    alias(libs.plugins.hilt.android)
     id("kotlin-kapt")
 }
 
@@ -53,19 +53,18 @@ android {
 
 dependencies {
 
-    val retrofit_version ="2.9.0"
-
-    implementation("com.google.dagger:hilt-android:2.48")
-    kapt("com.google.dagger:hilt-android-compiler:2.48")
+    //hilt
+    implementation(libs.androidx.hilt.compiler.v100)
+    kapt(libs.hilt.android.compiler.v244)
    // implementation ("androidx.hilt:hilt-work:1.2.0")
-    kapt ("androidx.hilt:hilt-compiler:1.2.0")
-    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+    kapt (libs.androidx.hilt.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
 
     //Retrofit
-    implementation ("com.squareup.retrofit2:retrofit:$retrofit_version")
-    implementation ("com.squareup.retrofit2:converter-gson:$retrofit_version")
-    implementation ("com.squareup.okhttp3:logging-interceptor:4.12.0")
-    implementation ("com.squareup.retrofit2:converter-scalars:$retrofit_version")
+    implementation (libs.retrofit)
+    implementation (libs.converter.gson)
+    implementation (libs.logging.interceptor)
+    implementation (libs.converter.scalars)
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
